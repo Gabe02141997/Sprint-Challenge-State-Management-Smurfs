@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import { fetchData } from '../actions/actions'
+import { fetchData, deleteSmurf } from '../actions/actions'
 import SmurfCard from '../components/SmurfCard'
 
 
@@ -19,13 +19,21 @@ const fetchSmurf = e => {
     e.preventDefault();
     props.fetchData()
 }
+
+
+const deletePerson = id => {
+    
+    props.deleteSmurf(id)
+}
     return(
         <div>
-           
-            { props.smurfs.map(smurf => (
-              <SmurfCard smurf ={smurf} key ={smurf.id}/> 
-            ))}
+            <div>
             <button onClick={fetchSmurf}>Fetch Smurf</button>
+            </div>
+            { props.smurfs.map(smurf => (
+              <SmurfCard smurf ={smurf} key ={smurf.id} removeSmurf={() =>deletePerson(smurf.id) }/> 
+            ))}
+        
         </div>
     )
 }
@@ -38,4 +46,4 @@ const mapStateToProps = state => (
 )
 
 
-export default connect(mapStateToProps, { fetchData })(SmurfList)
+export default connect(mapStateToProps, { fetchData, deleteSmurf })(SmurfList)

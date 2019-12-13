@@ -6,6 +6,7 @@ export const FETCH_DATA_FAILURE = "FETCH_DATA_FAILURE"
 export const ADD_SMURF = "ADD_SMURF"
 
 
+
 export const fetchData = () => dispatch => {
     dispatch({type: FETCH_DATA})
 
@@ -29,4 +30,8 @@ export const addSmurf = smurf => dispatch => {
     .catch(error => {
         dispatch({type: FETCH_DATA_FAILURE, payload: error.response})
     })
+}
+
+export const deleteSmurf = id => dispatch => {
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
 }
