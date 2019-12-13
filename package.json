@@ -18,8 +18,11 @@
   },
   "homepage": "https://github.com/LambdaSchool/Sprint-Challenge--Redux#readme",
   "dependencies": {
+    "@material-ui/core": "^4.7.2",
+    "add": "^2.0.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "yarn": "^1.21.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
