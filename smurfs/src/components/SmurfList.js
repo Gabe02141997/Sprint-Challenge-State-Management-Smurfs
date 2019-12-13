@@ -2,10 +2,23 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { fetchData, deleteSmurf } from '../actions/actions'
 import SmurfCard from '../components/SmurfCard'
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+    },
+  },
+}));
 
 
 
 const SmurfList = props => {
+
+    const classes = useStyles();
+
     useEffect(() => {
    props.fetchData()
     }, [])
@@ -28,7 +41,7 @@ const deletePerson = id => {
     return(
         <div>
             <div>
-            <button onClick={fetchSmurf}>Fetch Smurf</button>
+            <Button variant ='contained' color ='secondary'onClick={fetchSmurf}>Fetch Smurf</Button>
             </div>
             { props.smurfs.map(smurf => (
               <SmurfCard smurf ={smurf} key ={smurf.id} removeSmurf={() =>deletePerson(smurf.id) }/> 
